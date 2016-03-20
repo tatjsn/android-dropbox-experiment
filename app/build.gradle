@@ -6,10 +6,15 @@ android {
 
     defaultConfig {
         applicationId "io.github.tatjsn.dropboxexp"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion "N"
         versionCode 1
         versionName "1.0"
+
+        jackOptions {
+            // https://code.google.com/p/android/issues/detail?id=203168
+            enabled false
+        }
     }
     buildTypes {
         release {
@@ -17,10 +22,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
+//    compileOptions {
+//        sourceCompatibility 1.8
+//        targetCompatibility 1.8
+//    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.dropbox.core:dropbox-core-sdk:2.0.1'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
 }
+
